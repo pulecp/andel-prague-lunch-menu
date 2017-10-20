@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <title>Restaurants on Andel in Prague</title>
+  </head>
+  <body>
+    {% for pub, food in restaurants.items() %}
+    <h2>{{ pub }}</h2>
+        {% for name, price in food.items() %}
+        <div><p><b>{{ name }}</b> {{ price }}</p></div>
+        {% endfor %}
+    {% endfor %}
+  </body>
+</html>
