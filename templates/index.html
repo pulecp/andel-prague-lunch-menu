@@ -1,13 +1,16 @@
 <html>
   <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Restaurants on Andel in Prague</title>
   </head>
   <body>
-    {% for pub, food in restaurants.items() %}
+    {% for pub, menu in restaurants.items() %}
+    <div id="restaurant">
     <h2>{{ pub }}</h2>
-        {% for name, price in food.items() %}
-        <div><p><b>{{ name }}</b> {{ price }}</p></div>
+        {% for food in menu %}
+        <p class="tab"><b>{{ food[0] }}</b> {{ food[1] }}</p>
         {% endfor %}
+    </div>
     {% endfor %}
   </body>
 </html>
