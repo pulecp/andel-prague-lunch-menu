@@ -105,6 +105,7 @@ def run(day):
     restaurants['u svate anny'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
     restaurants['u kristiana'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
     restaurants['original formanka'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
+    restaurants['puor tradice'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
 
     return restaurants
 
