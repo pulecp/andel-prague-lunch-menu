@@ -1,16 +1,15 @@
 #!/usr/bin/env python
 
-# bernard
-from bs4 import BeautifulSoup
+#
+# Many thanks to Pavel Grochal (https://github.com/Darkless012) who provided the parsers
+# for Zomato.cz and Menicka.cz websites!!!
+#
 
-# mr.bao
-import pdftotext
-import re
-
-# general
 import urllib
 import os
 import json
+from bs4 import BeautifulSoup
+
 
 def bernard(day):
 
@@ -29,64 +28,6 @@ def bernard(day):
             #print("Food: {}, price: {}".format(name,price))
 
     return menu
-
-#  DEPRACATED, mr_bao was replaced by zomato
-#
-#
-#
-# def mr_bao(day):
-# 
-#     menu = []
-# 
-#     mrbao_file = urllib.request.urlopen("http://www.mrbao.cz/menu/")
-#     mrbao_html = mrbao_file.read()
-#     mrbao_file.close()
-# 
-#     # soup = BeautifulSoup(mrbao_html, "lxml")
-#     # print(soup.find_all("a", { "class" : "btn btn-large" }))
-#     
-#     #with open("mr_bao.pdf", "rb") as f:
-#     #    pdf = pdftotext.PDF(f)
-#     
-#     # bug: you would need to parse the proper URL from (http://www.mrbao.cz/menu/) because it's changing every week
-#     url = urllib.request.urlopen('http://www.mrbao.cz/wp-content/uploads/2017/07/%E6%96%B0%E7%89%88-Poledn%C3%AD-menu_CZ_R.pdf')
-#     pdf = pdftotext.PDF(url)
-# 
-#     for line in pdf[0].split('\n'):
-#         stripped_line = re.sub(' +',' ',line.strip())
-# 
-#         # try to find price
-#         pattern = re.compile(".*(1[0-9][0-9]K.).*")
-#         match = pattern.search(stripped_line)
-#         if match:
-#             price = match.group(1)
-#             # remove a price from stripped line
-#             stripped_line = re.sub(".1[0-9][0-9]K.","",stripped_line)
-#         else:
-#             price = ""
-# 
-#         # a detail to a meal can be on a newline starting with '('
-#         if stripped_line.startswith('('):
-#             menu[-1][0] = menu[-1][0] + stripped_line
-#         else:
-#             menu.append([stripped_line, price])
-# 
-#     # # uncomment for debugging
-#     # counter=0
-#     # for line in menu:
-#     #     print(str(counter) + line[0] + line[1])
-#     #     counter += 1
-# 
-#     if day == "1":
-#         return [menu[2],menu[3],menu[4],menu[5]]
-#     if day == "2":
-#         return [menu[7],menu[8],menu[9],menu[10]]
-#     if day == "3":
-#         return [menu[12],menu[13],menu[14],menu[15]]
-#     if day == "4":
-#         return [menu[17],menu[18],menu[19],menu[20]]
-#     if day == "5":
-#         return [menu[22],menu[23],menu[24],menu[25]]
 
 def zomato(url):
 
@@ -118,6 +59,42 @@ def zomato(url):
 
     return menu
 
+def menicka(url):
+
+    menu = []
+
+    menicka_request = urllib.request.urlopen(url)
+    menicka_response = menicka_request.read()
+    menicka_request.close()
+
+    soup = BeautifulSoup(menicka_response, "lxml")
+
+    try:
+        menicka = soup.select('.menicka')
+        if len(menicka) >=1:
+            first_menu = menicka[0]
+            elements = first_menu.find_all("div", class_="nabidka_1 cena".split())
+
+            completion = []
+
+            for element in elements:
+                element_classes = element.get('class',[])
+                if "nabidka_1" in element_classes:
+                    completion.append([element.get_text()])
+                if "cena" in element_classes:
+                    completion[-1].append(element.get_text())
+
+            for item in completion:
+                if len(item) == 0:
+                    continue
+                if len(item) == 1:
+                    menu.append([item[0],""])
+                if len(item) >= 2:
+                    menu.append([item[0],item[1]])
+    except:
+        pass
+
+    return menu
 
 def run(day):
 
@@ -125,6 +102,7 @@ def run(day):
 
     restaurants['bernard pub'] = bernard(day)
     restaurants['mr. bao'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
+    restaurants['u svate anny'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
 
     return restaurants
 
