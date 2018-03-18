@@ -5,10 +5,10 @@
   </head>
   <h3>work in progress!!!</h3>
   <body>
-    {% for pub, menu in restaurants.items() %}
+    {% for pub, items in restaurants.items() %}
     <div id="restaurant">
-    <h2>{{ pub }}</h2>
-        {% for food in menu %}
+    <h2>{{ pub }} <a href="{{ items['link'] }}">>>></a></h2>
+        {% for food in items['menu'] %}
         <p class="tab"><b>{{ food[0] }}</b> {{ food[1] }}</p>
         {% endfor %}
     </div>

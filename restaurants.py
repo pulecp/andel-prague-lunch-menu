@@ -2,12 +2,13 @@
 
 #
 # Many thanks to Pavel Grochal (https://github.com/Darkless012) who provided the parsers
-# for Zomato.cz and Menicka.cz websites!!!
+# for Zomato.cz and Menicka.cz !!!
 #
 
 import urllib
 import os
 import json
+import pprint
 from bs4 import BeautifulSoup
 
 
@@ -98,16 +99,27 @@ def menicka(url):
 
 def run(day):
 
-    restaurants = {}
+    restaurants = {
+        'bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
+        'mr. bao':           { 'link': 'https://www.mrbao.cz/'},
+        'u svate anny':      { 'link': 'http://www.usvateanny.cz/'},
+        'u kristiana':       { 'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
+        'original formanka': { 'link': 'http://www.smichovskaformanka.cz/'},
+        'tradice':           { 'link': 'http://www.tradiceandel.cz/'},
+        'na ztracene':       { 'link': 'http://www.naztracene.cz/'},
+        'klub santoska':     { 'link': 'http://www.klubsantoska.cz/'},
+    }
 
-    restaurants['bernard pub'] = bernard(day)
-    restaurants['mr. bao'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
-    restaurants['u svate anny'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
-    restaurants['u kristiana'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
-    restaurants['original formanka'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
-    restaurants['tradice'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
-    restaurants['na ztracene'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
-    restaurants['klub santoska'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
+    restaurants['bernard pub']['menu'] = bernard(day)
+    restaurants['mr. bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
+    restaurants['u svate anny']['menu'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
+    restaurants['u kristiana']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
+    restaurants['original formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
+    restaurants['tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
+    restaurants['na ztracene']['menu'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
+    restaurants['klub santoska']['menu'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
+
+    #pprint.pprint(restaurants)
 
     return restaurants
 
