@@ -7,7 +7,6 @@ itsdangerous==0.24
 Jinja2==2.9.6
 lxml==4.1.0
 MarkupSafe==1.0
-pdftotext==2.0.1
 pipdeptree==0.10.1
 ply==3.10
 py==1.4.34
