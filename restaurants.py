@@ -12,24 +12,6 @@ import pprint
 from bs4 import BeautifulSoup
 
 
-def bernard(day):
-
-    menu = []
-
-    bernard_file = urllib.request.urlopen("https://www.bernardpub.cz/pub/andel")
-    bernard_html = bernard_file.read()
-    bernard_file.close()
-
-    soup = BeautifulSoup(bernard_html, "lxml")
-    for food_list in soup.find_all("div", { "id" : "day-selection-tab-"+day }):
-        for food in food_list.find_all("div", { "class" : "single-food" }):
-            name = food.strong.contents[0]
-            price = food.find_all("span", { "class" : "food-price" })[0].contents[0]
-            menu.append([name,price])
-            #print("Food: {}, price: {}".format(name,price))
-
-    return menu
-
 def zomato(url):
 
     menu = []
@@ -97,7 +79,7 @@ def menicka(url):
 
     return menu
 
-def run(day):
+def run():
 
     restaurants = {
         'bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
@@ -110,7 +92,7 @@ def run(day):
         'klub santoska':     { 'link': 'http://www.klubsantoska.cz/'},
     }
 
-    restaurants['bernard pub']['menu'] = bernard(day)
+    restaurants['bernard pub']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16521569")
     restaurants['mr. bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
     restaurants['u svate anny']['menu'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
     restaurants['u kristiana']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
