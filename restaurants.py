@@ -84,7 +84,6 @@ def run():
     restaurants = {
         'bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
         'mr. bao':           { 'link': 'https://www.mrbao.cz/'},
-        'u svate anny':      { 'link': 'http://www.usvateanny.cz/'},
         'u kristiana':       { 'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
         'original formanka': { 'link': 'http://www.smichovskaformanka.cz/'},
         'tradice':           { 'link': 'http://www.tradiceandel.cz/'},
@@ -94,7 +93,6 @@ def run():
 
     restaurants['bernard pub']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16521569")
     restaurants['mr. bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
-    restaurants['u svate anny']['menu'] = menicka("https://www.menicka.cz/4050-restaurace-u-svate-anny.html")
     restaurants['u kristiana']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
     restaurants['original formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
     restaurants['tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
