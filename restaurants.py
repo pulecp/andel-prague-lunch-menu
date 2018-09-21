@@ -9,6 +9,7 @@ import urllib
 import os
 import json
 import pprint
+import datetime
 from bs4 import BeautifulSoup
 
 
@@ -79,6 +80,24 @@ def menicka(url):
 
     return menu
 
+def bernard(day):
+
+    menu = []
+
+    bernard_file = urllib.request.urlopen("https://www.bernardpub.cz/pub/andel")
+    bernard_html = bernard_file.read()
+    bernard_file.close()
+
+    soup = BeautifulSoup(bernard_html, "lxml")
+    for food_list in soup.find_all("div", { "id" : "day-selection-tab-"+day }):
+        for food in food_list.find_all("div", { "class" : "single-food" }):
+            name = food.strong.contents[0]
+            price = food.find_all("span", { "class" : "food-price" })[0].contents[0]
+            menu.append([name,price])
+            #print("Food: {}, price: {}".format(name,price))
+
+    return menu
+
 def run():
 
     restaurants = {
@@ -91,7 +110,7 @@ def run():
         'klub santoska':     { 'link': 'http://www.klubsantoska.cz/'},
     }
 
-    restaurants['bernard pub']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16521569")
+    restaurants['bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
     restaurants['mr. bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
     restaurants['u kristiana']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
     restaurants['original formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
