@@ -108,6 +108,11 @@ def run():
         'tradice':           { 'link': 'http://www.tradiceandel.cz/'},
         'na ztracene':       { 'link': 'http://www.naztracene.cz/'},
         'klub santoska':     { 'link': 'http://www.klubsantoska.cz/'},
+        'akcent':            { 'link': 'http://www.akcentrestaurant.cz/'},
+        'bife':              { 'link': 'http://www.biferestaurant.cz/'},
+        'radegastovna peron':{ 'link': 'http://peronsmichov.cz/'},
+        'plachta':           { 'link': 'http://www.plachta.cz/'},
+        'lokal blok':        { 'link': 'http://www.lokalblok.cz/'},
     }
 
     restaurants['bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
@@ -117,6 +122,11 @@ def run():
     restaurants['tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
     restaurants['na ztracene']['menu'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
     restaurants['klub santoska']['menu'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
+    restaurants['akcent']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16510836")
+    restaurants['bife']['menu'] = menicka("https://www.menicka.cz/4591-bife-restaurant.html")
+    restaurants['radegastovna peron']['menu'] = menicka("https://www.menicka.cz/456-radegastovna-per%F3n.html")
+    restaurants['plachta']['menu'] = menicka("https://www.menicka.cz/2249-restaurace-plachta.html")
+    restaurants['lokal blok']['menu'] = menicka("https://www.menicka.cz/2207-lokal-blok.html")
 
     #pprint.pprint(restaurants)
 
