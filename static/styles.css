@@ -11,6 +11,12 @@
     border-style: groove;
     padding: 10px;
     margin: 4px;
+
+    /* do not break blocks */
+    -webkit-column-break-inside: avoid;
+    -o-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    break-inside: avoid;
 }
 
 .tab {
