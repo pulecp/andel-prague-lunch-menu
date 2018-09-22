@@ -3,15 +3,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Restaurants on Andel in Prague</title>
   </head>
-  <h3>work in progress!!!</h3>
   <body>
+    <div id="row">
     {% for pub, items in restaurants.items() %}
     <div id="restaurant">
-    <h2>{{ pub }} <a href="{{ items['link'] }}">>>></a></h2>
+    <h3><a href="{{ items['link'] }}">{{ pub }}</a></h3>
         {% for food in items['menu'] %}
-        <p class="tab"><b>{{ food[0] }}</b> {{ food[1] }}</p>
+        <p class="tab">{{ food[0] }}<i> {{ food[1] }}</i></p>
         {% endfor %}
     </div>
     {% endfor %}
+    </div>
   </body>
 </html>
