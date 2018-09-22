@@ -35,3 +35,8 @@ a:link {
     color: #009CAC;
     text-decoration: none;
 }
+
+a:visited {
+    color: #009CAC;
+    text-decoration: none;
+}
