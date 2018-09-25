@@ -8,9 +8,11 @@
     {% for pub, items in restaurants.items() %}
     <div id="restaurant">
     <h3><a href="{{ items['link'] }}">{{ pub }}</a></h3>
-        {% for food in items['menu'] %}
-        <p class="tab">{{ food[0] }}<i> {{ food[1] }}</i></p>
-        {% endfor %}
+	<ul>
+		{% for food in items['menu'] %}
+		<li class="tab">{{ food[0] }}<i> - {{ food[1] }}</i></li>>
+	        {% endfor %}
+	</ul>
     </div>
     {% endfor %}
     </div>
