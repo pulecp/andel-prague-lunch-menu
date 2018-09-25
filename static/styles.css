@@ -32,6 +32,11 @@ html {
     margin-left: 20px;
 }
 
+h1 {
+    font-family: 'Indie Flower', sans-serif;
+    text-align: center;
+}
+
 h3 {
     font-family: 'Indie Flower', sans-serif;
     font-size: 150%;

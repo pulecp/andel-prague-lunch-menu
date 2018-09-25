@@ -1,9 +1,10 @@
 <html>
   <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v=1.3">
-    <title>Restaurants on Andel in Prague</title>
+    <title>Restaurants on Anděl in Prague</title>
   </head>
   <body>
+    <h1>Lunch for heroes</h1>
     <div id="row">
     {% for pub, items in restaurants.items() %}
     <div id="restaurant">
