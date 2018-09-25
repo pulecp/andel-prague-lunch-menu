@@ -101,32 +101,32 @@ def bernard(day):
 def run():
 
     restaurants = {
-        'bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
-        'mr. bao':           { 'link': 'https://www.mrbao.cz/'},
-        'u kristiana':       { 'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
-        'original formanka': { 'link': 'http://www.smichovskaformanka.cz/'},
-        'tradice':           { 'link': 'http://www.tradiceandel.cz/'},
-        'na ztracene':       { 'link': 'http://www.naztracene.cz/'},
-        'klub santoska':     { 'link': 'http://www.klubsantoska.cz/'},
-        'akcent':            { 'link': 'http://www.akcentrestaurant.cz/'},
-        'bife':              { 'link': 'http://www.biferestaurant.cz/'},
-        'radegastovna peron':{ 'link': 'http://peronsmichov.cz/'},
-        'plachta':           { 'link': 'http://www.plachta.cz/'},
-        'lokal blok':        { 'link': 'http://www.lokalblok.cz/'},
+        'Bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
+        'Mr. Bao':           { 'link': 'https://www.mrbao.cz/'},
+        'U Kristiána':       { 'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
+        'Formanka':          { 'link': 'http://www.smichovskaformanka.cz/'},
+        'Tradice':           { 'link': 'http://www.tradiceandel.cz/'},
+        'Na Ztracené':       { 'link': 'http://www.naztracene.cz/'},
+        'Klub Santoška':     { 'link': 'http://www.klubsantoska.cz/'},
+        'Akcent':            { 'link': 'http://www.akcentrestaurant.cz/'},
+        'Bife':              { 'link': 'http://www.biferestaurant.cz/'},
+        'Radegastovna Perón':{ 'link': 'http://peronsmichov.cz/'},
+        'Plachta':           { 'link': 'http://www.plachta.cz/'},
+        'Lokal Blok':        { 'link': 'http://www.lokalblok.cz/'},
     }
 
-    restaurants['bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
-    restaurants['mr. bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
-    restaurants['u kristiana']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
-    restaurants['original formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
-    restaurants['tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
-    restaurants['na ztracene']['menu'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
-    restaurants['klub santoska']['menu'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
-    restaurants['akcent']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16510836")
-    restaurants['bife']['menu'] = menicka("https://www.menicka.cz/4591-bife-restaurant.html")
-    restaurants['radegastovna peron']['menu'] = menicka("https://www.menicka.cz/456-radegastovna-per%F3n.html")
-    restaurants['plachta']['menu'] = menicka("https://www.menicka.cz/2249-restaurace-plachta.html")
-    restaurants['lokal blok']['menu'] = menicka("https://www.menicka.cz/2207-lokal-blok.html")
+    restaurants['Bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
+    restaurants['Mr. Bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
+    restaurants['U Kristiána']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
+    restaurants['Formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
+    restaurants['Tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
+    restaurants['Na Ztracené']['menu'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
+    restaurants['Klub Santoška']['menu'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
+    restaurants['Akcent']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16510836")
+    restaurants['Bife']['menu'] = menicka("https://www.menicka.cz/4591-bife-restaurant.html")
+    restaurants['Radegastovna Perón']['menu'] = menicka("https://www.menicka.cz/456-radegastovna-per%F3n.html")
+    restaurants['Plachta']['menu'] = menicka("https://www.menicka.cz/2249-restaurace-plachta.html")
+    restaurants['Lokal Blok']['menu'] = menicka("https://www.menicka.cz/2207-lokal-blok.html")
 
     #pprint.pprint(restaurants)
 
