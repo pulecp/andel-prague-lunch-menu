@@ -53,3 +53,19 @@ a:visited {
     color: #009CAC;
     text-decoration: none;
 }
+
+/* github corner https://github.com/tholman/github-corners */
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none;
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+    }
+}
