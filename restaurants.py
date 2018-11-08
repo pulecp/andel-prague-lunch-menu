@@ -25,7 +25,8 @@ def zomato(url):
 
     HEADERS = {
         'user_key': zomato_apikey,
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'User-Agent': 'Mozilla/5.0'
     }
 
     zomato_request = urllib.request.Request(url, headers = HEADERS)
