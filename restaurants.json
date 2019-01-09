@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Bernard pub",
+    "link": "https://www.bernardpub.cz/pub/andel",
+    "type": "bernard"
+  },
+  {
+    "name": "Mr. Bao",
+    "link": "https://www.mrbao.cz/",
+    "type": "zomato",
+    "zomatoId": "18337487"
+  },
+  {
+    "name": "U Kristiána",
+    "link": "http://www.ukristiana.cz/#restaurace-ukristiana",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2323-restaurace-u-kristiana.html"
+  },
+  {
+    "name": "Formanka",
+    "link": "http://www.smichovskaformanka.cz/",
+    "type": "zomato",
+    "zomatoId": "16506447"
+  },
+  {
+    "name": "Tradice",
+    "link": "http://www.tradiceandel.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2305-puor-tradice.html"
+  },
+  {
+    "name": "Na Ztracené",
+    "link": "http://www.naztracene.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2324-na-ztracene.html"
+  },
+  {
+    "name": "Klub Santoška",
+    "link": "http://www.klubsantoska.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2238-klub-santoska.html"
+  },
+  {
+    "name": "Akcent",
+    "link": "http://www.akcentrestaurant.cz/",
+    "type": "zomato",
+    "zomatoId": "16510836"
+  },
+  {
+    "name": "Bife",
+    "link": "http://www.biferestaurant.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/4591-bife-restaurant.html"
+  },
+  {
+    "name": "Radegastovna Perón",
+    "link": "http://peronsmichov.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/456-radegastovna-per%F3n.html"
+  },
+  {
+    "name": "Plachta",
+    "link": "http://www.plachta.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2249-restaurace-plachta.html"
+  },
+  {
+    "name": "Lokal Blok",
+    "link": "http://www.lokalblok.cz/",
+    "type": "menicka",
+    "menickaLink": "https://www.menicka.cz/2207-lokal-blok.html"
+  }
+]
