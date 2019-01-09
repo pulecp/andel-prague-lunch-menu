@@ -4,21 +4,31 @@
 }
 
 html {
-  background: linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)), url(images/angel-1891440_640.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), url(images/angel-1891440_640.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-#row {
-    column-count: 2;
+.container {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    max-width: 100%;
 }
-#restaurant {
+
+.restaurant {
     border-radius: 8px;
-    border-style: groove;
+    border: 1px solid black;
+    border-width: 0px 0px 1px 1px;
     padding: 10px;
     margin: 4px;
+    width: 31%;
+
+    -webkit-box-shadow: -2px 5px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: -2px 2px 3px 0px rgba(0, 0, 0, 0.2);
 
     /* do not break blocks */
     -webkit-column-break-inside: avoid;
@@ -27,9 +37,25 @@ html {
     break-inside: avoid;
 }
 
+.menu {
+    font-family: 'Roboto', sans-serif;
+    list-style: none;
+    padding: 0px;
+}
+
+li:nth-child(2n) {
+    background-color: #EAEAEA;
+    border-bottom: #CCC solid 1px;
+}
+
+li:last-child {
+    border: 0px;
+    border-radius: 5px;
+}
+
 .tab {
-    margin: 4px;
-    margin-left: 20px;
+    padding: 10px 5px 10px 5px;
+    border-bottom: #CCC solid 1px;
 }
 
 h1 {
@@ -57,7 +83,7 @@ a:visited {
 /* github corner https://github.com/tholman/github-corners */
 
 .github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
+    animation: octocat-wave 560ms ease-in-out;
 }
 
 @media (max-width: 500px) {
