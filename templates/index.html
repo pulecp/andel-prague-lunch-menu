@@ -7,16 +7,31 @@
 <body>
 <h1>Lunch for heroes</h1>
 <div class="container">
-    {% for pub, items in restaurants.items() %}
-        {% if items.menu | length > 0 %}
+    {% for restaurant in restaurants %}
+        {% if restaurant.menu | length > 0 %}
             <div class="restaurant">
-                <h3><a href="{{ items['link'] }}">{{ pub }}</a></h3>
-                <ul class="menu">
-                    {% for food in items['menu'] %}
-                        <li class="tab">{{ food[0] }}<i> - {{ food[1] }}</i></li>
+                <h3><a href="{{ restaurant.link }}">{{ restaurant.name }}</a></h3>
+                <table class="menu">
+                    {% for food in restaurant.menu %}
+                        <tr>
+                            <td class="tab food-name">{{ food[0] }}</td>
+                            <td class="tab food-price">{{ food[1] }}</td>
+                        </tr>
                     {% endfor %}
+                </table>
+                <ul class="menu">
+
                 </ul>
             </div>
+        {% endif %}
+    {% endfor %}
+</div>
+<div class="container">
+    {% for restaurant in restaurants %}
+        {% if restaurant.menu | length == 0 %}
+            <span class="unreachable">
+                <a href="{{ restaurant.link }}">{{ restaurant.name }} </a>
+            </span>
         {% endif %}
     {% endfor %}
 </div>

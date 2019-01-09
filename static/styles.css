@@ -9,6 +9,7 @@ html {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    font-family: 'Roboto', sans-serif;
 }
 
 .container {
@@ -16,6 +17,7 @@ html {
     flex-flow: wrap;
     justify-content: center;
     max-width: 100%;
+    margin-bottom: 10px;
 }
 
 .restaurant {
@@ -38,24 +40,47 @@ html {
 }
 
 .menu {
-    font-family: 'Roboto', sans-serif;
     list-style: none;
     padding: 0px;
 }
 
-li:nth-child(2n) {
-    background-color: #EAEAEA;
-    border-bottom: #CCC solid 1px;
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-li:last-child {
+tr:nth-child(2n) {
+    background-color: #EAEAEA;
+}
+
+tr:last-child td {
     border: 0px;
-    border-radius: 5px;
+    border-radius: 0px 0px 5px 5px;
 }
 
 .tab {
-    padding: 10px 5px 10px 5px;
+    padding: 10px;
     border-bottom: #CCC solid 1px;
+}
+
+.food-name {
+    padding-right: 10px;
+}
+
+.food-price {
+    color: #7C7C7C;
+    padding: 10px;
+    padding-left: 0px;
+    text-align: right;
+    min-width: 15%;
+}
+
+.unreachable {
+    margin-right: 5px;
+}
+
+.unreachable:not(:last-child)::after {
+    content: '-';
 }
 
 h1 {

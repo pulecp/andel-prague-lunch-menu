@@ -8,7 +8,6 @@
 import urllib
 import os
 import json
-import datetime
 from bs4 import BeautifulSoup
 
 
@@ -80,53 +79,34 @@ def menicka(url):
     return menu
 
 
-def bernard(day):
+def bernard():
     menu = []
 
     bernard_file = urllib.request.urlopen("https://www.bernardpub.cz/pub/andel")
     bernard_html = bernard_file.read()
     bernard_file.close()
 
-    soup = BeautifulSoup(bernard_html, "lxml")
-    for food_list in soup.find_all("div", {"id": "day-selection-tab-" + day}):
+    soup = BeautifulSoup(bernard_html, "lxml").find('section', {'class': 'daily-menu'})
+    for food_list in soup.find_all("ul", {"class": "food-list"}):
         for food in food_list.find_all("div", {"class": "single-food"}):
             name = food.strong.contents[0]
             price = food.find_all("span", {"class": "food-price"})[0].contents[0]
             menu.append([name, price])
-            # print("Food: {}, price: {}".format(name,price))
 
     return menu
 
 
 def run():
-    restaurants = {
-        'Bernard pub': {'link': 'https://www.bernardpub.cz/pub/andel'},
-        'Mr. Bao': {'link': 'https://www.mrbao.cz/'},
-        'U Kristiána': {'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
-        'Formanka': {'link': 'http://www.smichovskaformanka.cz/'},
-        'Tradice': {'link': 'http://www.tradiceandel.cz/'},
-        'Na Ztracené': {'link': 'http://www.naztracene.cz/'},
-        'Klub Santoška': {'link': 'http://www.klubsantoska.cz/'},
-        'Akcent': {'link': 'http://www.akcentrestaurant.cz/'},
-        'Bife': {'link': 'http://www.biferestaurant.cz/'},
-        'Radegastovna Perón': {'link': 'http://peronsmichov.cz/'},
-        'Plachta': {'link': 'http://www.plachta.cz/'},
-        'Lokal Blok': {'link': 'http://www.lokalblok.cz/'},
-    }
+    with open('restaurants.json') as f:
+        restaurants = json.load(f)
 
-    restaurants['Bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
-    restaurants['Mr. Bao']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=18337487")
-    restaurants['U Kristiána']['menu'] = menicka("https://www.menicka.cz/2323-restaurace-u-kristiana.html")
-    restaurants['Formanka']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16506447")
-    restaurants['Tradice']['menu'] = menicka("https://www.menicka.cz/2305-puor-tradice.html")
-    restaurants['Na Ztracené']['menu'] = menicka("https://www.menicka.cz/2324-na-ztracene.html")
-    restaurants['Klub Santoška']['menu'] = menicka("https://www.menicka.cz/2238-klub-santoska.html")
-    restaurants['Akcent']['menu'] = zomato("https://developers.zomato.com/api/v2.1/dailymenu?res_id=16510836")
-    restaurants['Bife']['menu'] = menicka("https://www.menicka.cz/4591-bife-restaurant.html")
-    restaurants['Radegastovna Perón']['menu'] = menicka("https://www.menicka.cz/456-radegastovna-per%F3n.html")
-    restaurants['Plachta']['menu'] = menicka("https://www.menicka.cz/2249-restaurace-plachta.html")
-    restaurants['Lokal Blok']['menu'] = menicka("https://www.menicka.cz/2207-lokal-blok.html")
-
-    # pprint.pprint(restaurants)
+    for restaurant in restaurants:
+        if restaurant['type'] == 'bernard':
+            restaurant['menu'] = bernard()
+        elif restaurant['type'] == 'zomato':
+            restaurant['menu'] = zomato(
+                "https://developers.zomato.com/api/v2.1/dailymenu?res_id=" + restaurant['zomatoId'])
+        elif restaurant['type'] == 'menicka':
+            restaurant['menu'] = menicka(restaurant['menickaLink'])
 
     return restaurants
