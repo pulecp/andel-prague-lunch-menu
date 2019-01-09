@@ -8,13 +8,11 @@
 import urllib
 import os
 import json
-import pprint
 import datetime
 from bs4 import BeautifulSoup
 
 
 def zomato(url):
-
     menu = []
 
     try:
@@ -29,23 +27,23 @@ def zomato(url):
         'User-Agent': 'Mozilla/5.0'
     }
 
-    zomato_request = urllib.request.Request(url, headers = HEADERS)
+    zomato_request = urllib.request.Request(url, headers=HEADERS)
     zomato_response = urllib.request.urlopen(zomato_request)
     zomato_data = json.load(zomato_response)
     zomato_response.close()
 
     try:
-        dishes = zomato_data.get('daily_menus',[{}])[0].get('daily_menu',{}).get('dishes',[{}])
+        dishes = zomato_data.get('daily_menus', [{}])[0].get('daily_menu', {}).get('dishes', [{}])
         for x in dishes:
-            dish = x.get('dish',{})
-            menu.append([dish.get('name'),dish.get('price')])
+            dish = x.get('dish', {})
+            menu.append([dish.get('name'), dish.get('price')])
     except:
         pass
 
     return menu
 
-def menicka(url):
 
+def menicka(url):
     menu = []
 
     menicka_request = urllib.request.urlopen(url)
@@ -56,14 +54,14 @@ def menicka(url):
 
     try:
         menicka = soup.select('.menicka')
-        if len(menicka) >=1:
+        if len(menicka) >= 1:
             first_menu = menicka[0]
             elements = first_menu.find_all("div", class_="nabidka_1 cena".split())
 
             completion = []
 
             for element in elements:
-                element_classes = element.get('class',[])
+                element_classes = element.get('class', [])
                 if "nabidka_1" in element_classes:
                     completion.append([element.get_text()])
                 if "cena" in element_classes:
@@ -73,16 +71,16 @@ def menicka(url):
                 if len(item) == 0:
                     continue
                 if len(item) == 1:
-                    menu.append([item[0],""])
+                    menu.append([item[0], ""])
                 if len(item) >= 2:
-                    menu.append([item[0],item[1]])
+                    menu.append([item[0], item[1]])
     except:
         pass
 
     return menu
 
-def bernard(day):
 
+def bernard(day):
     menu = []
 
     bernard_file = urllib.request.urlopen("https://www.bernardpub.cz/pub/andel")
@@ -90,30 +88,30 @@ def bernard(day):
     bernard_file.close()
 
     soup = BeautifulSoup(bernard_html, "lxml")
-    for food_list in soup.find_all("div", { "id" : "day-selection-tab-"+day }):
-        for food in food_list.find_all("div", { "class" : "single-food" }):
+    for food_list in soup.find_all("div", {"id": "day-selection-tab-" + day}):
+        for food in food_list.find_all("div", {"class": "single-food"}):
             name = food.strong.contents[0]
-            price = food.find_all("span", { "class" : "food-price" })[0].contents[0]
-            menu.append([name,price])
-            #print("Food: {}, price: {}".format(name,price))
+            price = food.find_all("span", {"class": "food-price"})[0].contents[0]
+            menu.append([name, price])
+            # print("Food: {}, price: {}".format(name,price))
 
     return menu
 
-def run():
 
+def run():
     restaurants = {
-        'Bernard pub':       { 'link': 'https://www.bernardpub.cz/pub/andel' },
-        'Mr. Bao':           { 'link': 'https://www.mrbao.cz/'},
-        'U Kristiána':       { 'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
-        'Formanka':          { 'link': 'http://www.smichovskaformanka.cz/'},
-        'Tradice':           { 'link': 'http://www.tradiceandel.cz/'},
-        'Na Ztracené':       { 'link': 'http://www.naztracene.cz/'},
-        'Klub Santoška':     { 'link': 'http://www.klubsantoska.cz/'},
-        'Akcent':            { 'link': 'http://www.akcentrestaurant.cz/'},
-        'Bife':              { 'link': 'http://www.biferestaurant.cz/'},
-        'Radegastovna Perón':{ 'link': 'http://peronsmichov.cz/'},
-        'Plachta':           { 'link': 'http://www.plachta.cz/'},
-        'Lokal Blok':        { 'link': 'http://www.lokalblok.cz/'},
+        'Bernard pub': {'link': 'https://www.bernardpub.cz/pub/andel'},
+        'Mr. Bao': {'link': 'https://www.mrbao.cz/'},
+        'U Kristiána': {'link': 'http://www.ukristiana.cz/#restaurace-ukristiana'},
+        'Formanka': {'link': 'http://www.smichovskaformanka.cz/'},
+        'Tradice': {'link': 'http://www.tradiceandel.cz/'},
+        'Na Ztracené': {'link': 'http://www.naztracene.cz/'},
+        'Klub Santoška': {'link': 'http://www.klubsantoska.cz/'},
+        'Akcent': {'link': 'http://www.akcentrestaurant.cz/'},
+        'Bife': {'link': 'http://www.biferestaurant.cz/'},
+        'Radegastovna Perón': {'link': 'http://peronsmichov.cz/'},
+        'Plachta': {'link': 'http://www.plachta.cz/'},
+        'Lokal Blok': {'link': 'http://www.lokalblok.cz/'},
     }
 
     restaurants['Bernard pub']['menu'] = bernard(str(datetime.datetime.today().isoweekday()))
@@ -129,7 +127,6 @@ def run():
     restaurants['Plachta']['menu'] = menicka("https://www.menicka.cz/2249-restaurace-plachta.html")
     restaurants['Lokal Blok']['menu'] = menicka("https://www.menicka.cz/2207-lokal-blok.html")
 
-    #pprint.pprint(restaurants)
+    # pprint.pprint(restaurants)
 
     return restaurants
-
