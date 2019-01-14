@@ -111,6 +111,18 @@ a:visited {
     animation: octocat-wave 560ms ease-in-out;
 }
 
+@media (max-width: 1260px) {
+    .restaurant {
+        width: 40%;
+    }
+}
+
+@media (max-width: 800px) {
+    .restaurant {
+        width: 100%;
+    }
+}
+
 @media (max-width: 500px) {
     .github-corner:hover .octo-arm {
         animation: none;
@@ -119,4 +131,9 @@ a:visited {
     .github-corner .octo-arm {
         animation: octocat-wave 560ms ease-in-out;
     }
+
+    .restaurant {
+        width: 100%;
+    }
 }
+
