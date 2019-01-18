@@ -115,6 +115,14 @@ a:visited {
     .restaurant {
         width: 100%;
     }
+
+    .restaurant h3 {
+        font-size: 2.5em
+    }
+
+    .restaurant .menu {
+        font-size: 2em;
+    }
 }
 
 @media (max-width: 500px) {
