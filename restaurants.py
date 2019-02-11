@@ -102,11 +102,19 @@ def run():
 
     for restaurant in restaurants:
         if restaurant['type'] == 'bernard':
-            restaurant['menu'] = bernard()
+            try:
+                restaurant['menu'] = bernard()
+            except:
+                pass
         elif restaurant['type'] == 'zomato':
-            restaurant['menu'] = zomato(
+            try:
+                restaurant['menu'] = zomato(
                 "https://developers.zomato.com/api/v2.1/dailymenu?res_id=" + restaurant['zomatoId'])
+            except:
+                pass
         elif restaurant['type'] == 'menicka':
-            restaurant['menu'] = menicka(restaurant['menickaLink'])
-
+            try:
+                restaurant['menu'] = menicka(restaurant['menickaLink'])
+            except:
+                pass
     return restaurants
