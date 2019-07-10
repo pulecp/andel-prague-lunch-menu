@@ -51,20 +51,23 @@ def menicka(url):
 
     soup = BeautifulSoup(menicka_response, "lxml")
 
+    # try:
+    menicka = soup.select('.menicka')
+
     try:
-        menicka = soup.select('.menicka')
         if len(menicka) >= 1:
             first_menu = menicka[0]
-            elements = first_menu.find_all("div", class_="nabidka_1 cena".split())
+            today_menu = first_menu.find_all("li")
 
             completion = []
+            for item in today_menu:
+                food = item.find('div', {'class': 'polozka'})
+                if food is not None:
+                    completion.append([food.get_text()])
 
-            for element in elements:
-                element_classes = element.get('class', [])
-                if "nabidka_1" in element_classes:
-                    completion.append([element.get_text()])
-                if "cena" in element_classes:
-                    completion[-1].append(element.get_text())
+                    price = item.find('div', {'class': 'cena'})
+                    if price is not None:
+                        completion[-1].append(price.get_text())
 
             for item in completion:
                 if len(item) == 0:
@@ -113,8 +116,8 @@ def run():
             except:
                 pass
         elif restaurant['type'] == 'menicka':
-            try:
-                restaurant['menu'] = menicka(restaurant['menickaLink'])
-            except:
-                pass
+            # try:
+            restaurant['menu'] = menicka(restaurant['menickaLink'])
+            # except:
+            #     pass
     return restaurants
