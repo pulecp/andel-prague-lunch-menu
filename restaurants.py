@@ -9,6 +9,7 @@ import urllib
 import os
 import json
 from bs4 import BeautifulSoup
+import datetime
 
 
 def zomato(url):
@@ -89,12 +90,13 @@ def bernard():
     bernard_html = bernard_file.read()
     bernard_file.close()
 
-    soup = BeautifulSoup(bernard_html, "lxml").find('section', {'class': 'daily-menu'})
-    for food_list in soup.find_all("ul", {"class": "food-list"}):
-        for food in food_list.find_all("div", {"class": "single-food"}):
-            name = food.strong.contents[0]
-            price = food.find_all("span", {"class": "food-price"})[0].contents[0]
-            menu.append([name, price])
+    body = BeautifulSoup(bernard_html, "lxml")
+    menu_id = body.find(text=datetime.datetime.today().__format__('%-d. %-m.')).parent.parent['data-tab-target']
+
+    for food in body.find(id=menu_id).find_all("div", {"class": "single-food"}):
+        name = food.strong.contents[0]
+        price = food.find_all("span", {"class": "food-price"})[0].contents[0]
+        menu.append([name, price])
 
     return menu
 
