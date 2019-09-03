@@ -4,7 +4,6 @@
 }
 
 html {
-    background: linear-gradient(rgba(255, 255, 255, .9), rgba(255, 255, 255, .9)), url(images/angel-1891440_640.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,7 +20,7 @@ html {
 }
 
 .restaurant {
-    border-radius: 8px;
+    border-radius: 0px 0px 0px 6px;
     border: 1px solid black;
     border-width: 0px 0px 1px 1px;
     padding: 10px;
@@ -84,12 +83,10 @@ tr:last-child td {
 }
 
 h1 {
-    font-family: 'Indie Flower', sans-serif;
     text-align: center;
 }
 
 h3 {
-    font-family: 'Indie Flower', sans-serif;
     font-size: 150%;
     margin-top: 4px;
     margin-bottom: 8px;
