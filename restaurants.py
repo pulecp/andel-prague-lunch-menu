@@ -91,7 +91,12 @@ def bernard():
     bernard_file.close()
 
     body = BeautifulSoup(bernard_html, "lxml")
-    menu_id = body.find(text=datetime.datetime.today().__format__('%-d. %-m.')).parent.parent['data-tab-target']
+    datetab = body.find(text=datetime.datetime.today().__format__('%-d. %-m.'))
+
+    if datetab:
+        menu_id = datetab.parent.parent['data-tab-target']
+    else:
+        menu_id = body.find(attrs={"class": "day-selection-tab"})['id']
 
     for food in body.find(id=menu_id).find_all("div", {"class": "single-food"}):
         name = food.strong.contents[0]
