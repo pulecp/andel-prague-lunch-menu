@@ -64,5 +64,11 @@
     "link": "http://www.lokalblok.cz/",
     "type": "menicka",
     "menickaLink": "https://www.menicka.cz/2207-lokal-blok.html"
+  },
+  {
+    "name": "Potrefená Husa",
+    "link": "http://www.potrefenahusaandel.cz/#tydenni-menu",
+    "type": "zomato",
+    "zomatoId": "434613896"
   }
 ]
