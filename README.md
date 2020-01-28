@@ -1,9 +1,6 @@
 # Lunch menus on Andel in Prague
 Website which shows lunch menus of your favorite restaurants
 
-## !!!work in progress!!!
-
-
 [https://andel-lunch.herokuapp.com/](https://andel-lunch.herokuapp.com/)
 
 ## how to run
