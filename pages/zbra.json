@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Škoda lásky",
+    "link": "https://www.zomato.com/praha/restaurace-%C5%A1koda-l%C3%A1sky-zbraslav-praha-5/daily-menu",
+    "type": "zomato",
+    "zomatoId": "16506377"
+  },
+  {
+    "name": "Nad královnou",
+    "link": "https://www.zomato.com/praha/nad-královnou-zbraslav-praha-5",
+    "type": "zomato",
+    "zomatoId": "16506597"
+  },
+  {
+    "name": "Barabizna",
+    "link": "https://barabizna.cz/rm-menu-type/denni-menu/",
+    "type": "zomato",
+    "zomatoId": "16519949"
+  },
+  {
+    "name": "Zbraslavský hostinec",
+    "link": "https://www.zbraslavskyhostinec.cz/poledni-menu",
+    "type": "zomato",
+    "zomatoId": "18057528"
+  },
+  {
+    "name": "Patium",
+    "link": "https://www.patium.cz/stranka-denni-menu-21",
+    "type": "zomato",
+    "zomatoId": "16506243"
+  }
+]
