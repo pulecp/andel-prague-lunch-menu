@@ -106,8 +106,8 @@ def bernard():
     return menu
 
 
-def run():
-    with open('restaurants.json') as f:
+def run(filename):
+    with open('pages/'+filename) as f:
         restaurants = json.load(f)
 
     for restaurant in restaurants:
