@@ -18,7 +18,7 @@ for page in os.listdir('pages'):
 @app.route('/', defaults={'name': DEFAULT_PAGE})
 @app.route('/<name>')
 def hello(name):
-    if (name not in pages):
+    if name not in pages:
         name = DEFAULT_PAGE
         # return render_template('404.html')
     return render_template('index.html', restaurants=pages[name])
