@@ -28,5 +28,11 @@
     "link": "https://www.patium.cz/stranka-denni-menu-21",
     "type": "zomato",
     "zomatoId": "16506243"
+  },
+    {
+    "name": "U Přístavu",
+    "link": "https://www.facebook.com/restauraceupristavu/",
+    "type": "zomato",
+    "zomatoId": "16506168"
   }
 ]
