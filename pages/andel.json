@@ -1,74 +1,20 @@
 [
   {
-    "name": "Mr. Bao",
-    "link": "https://www.mrbao.cz/",
+    "name": "Zubajda",
+    "link": "https://www.restauracezubajda.cz/",
     "type": "zomato",
-    "zomatoId": "18337487"
+    "zomatoId": "16506667"
   },
-  {
-    "name": "U Kristiána",
-    "link": "http://www.ukristiana.cz/#restaurace-ukristiana",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2323-restaurace-u-kristiana.html"
-  },
-  {
-    "name": "Formanka",
-    "link": "http://www.smichovskaformanka.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2240-original-formanka-1869.html"
-  },
-  {
-    "name": "Tradice",
-    "link": "http://www.tradiceandel.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2305-puor-tradice.html"
-  },
-  {
-    "name": "Na Ztracené",
-    "link": "http://www.naztracene.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2324-na-ztracene.html"
-  },
-  {
-    "name": "Klub Santoška",
-    "link": "http://www.klubsantoska.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2238-klub-santoska.html"
-  },
-  {
-    "name": "Akcent",
-    "link": "http://www.akcentrestaurant.cz/",
+    {
+    "name": "Filip a Jakub",
+    "link": "http://www.filipjakub.cz/denni-menu/",
     "type": "zomato",
-    "zomatoId": "16510836"
+    "zomatoId": "16508879"
   },
   {
-    "name": "Bife",
-    "link": "http://www.biferestaurant.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/4591-bife-restaurant.html"
-  },
-  {
-    "name": "Radegastovna Perón",
-    "link": "http://peronsmichov.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/456-radegastovna-per%F3n.html"
-  },
-  {
-    "name": "Plachta",
-    "link": "http://www.plachta.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2249-restaurace-plachta.html"
-  },
-  {
-    "name": "Lokal Blok",
-    "link": "http://www.lokalblok.cz/",
-    "type": "menicka",
-    "menickaLink": "https://www.menicka.cz/2207-lokal-blok.html"
-  },
-  {
-    "name": "Potrefená Husa",
-    "link": "http://www.potrefenahusaandel.cz/#tydenni-menu",
+    "name": "U Mikuláše Dačického",
+    "link": "http://www.umikulasedacickeho.com",
     "type": "zomato",
-    "zomatoId": "16506048"
+    "zomatoId": "16507158"
   }
 ]
