@@ -13,6 +13,8 @@
   },
   {
     "name": "U dvou cibulí",
-    "link": "https://www.nhahaihanh.cz/o-nas/"
+    "link": "https://www.nhahaihanh.cz/o-nas/",
+    "type": "zomato",
+    "zomatoId": "16508879"
   }
 ]
