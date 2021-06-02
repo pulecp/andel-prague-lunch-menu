@@ -123,8 +123,10 @@ def run(filename):
             except:
                 pass
         elif restaurant['type'] == 'menicka':
-            # try:
-            restaurant['menu'] = menicka(restaurant['menickaLink'])
-            # except:
-            #     pass
+            try:
+                restaurant['menu'] = menicka(restaurant['menickaLink'])
+            except:
+                pass
+        elif restaurant['type'] == 'link':
+            pass
     return restaurants
