@@ -29,10 +29,15 @@
     "type": "zomato",
     "zomatoId": "16506243"
   },
-    {
+  {
     "name": "U Přístavu",
     "link": "https://www.facebook.com/restauraceupristavu/",
     "type": "zomato",
     "zomatoId": "16506168"
+  },
+  {
+    "name": "Babá Cucina",
+    "link": "https://babacucina.cz/#denni-nabidka",
+    "type": "link"
   }
 ]
