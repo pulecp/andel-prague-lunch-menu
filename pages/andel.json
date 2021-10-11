@@ -11,6 +11,11 @@
     "type": "zomato",
     "zomatoId": "16508879"
   },
+    {
+    "name": "Lokal Blok",
+    "link": "http://www.lokalblok.cz/jidelni-listek",
+    "type": "link"
+  },
   {
     "name": "U dvou cibulí",
     "link": "https://www.nhahaihanh.cz/o-nas/",
