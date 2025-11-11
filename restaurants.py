@@ -1,46 +1,7 @@
-#!/usr/bin/env python
-
-#
-# Many thanks to Pavel Grochal (https://github.com/Darkless012) who provided the parsers
-# for Zomato.cz and Menicka.cz !!!
-#
-
 import urllib
-import os
 import json
 from bs4 import BeautifulSoup
-import datetime
-
-
-def zomato(url):
-    menu = []
-
-    try:
-        zomato_apikey = ENV['ZOMATO_APIKEY']
-    except:
-        # use export ZOMATO_APIKEY=<zomato_api_key> before you start this application locally
-        zomato_apikey = os.environ.get('ZOMATO_APIKEY')
-
-    HEADERS = {
-        'user_key': zomato_apikey,
-        'Accept': 'application/json',
-        'User-Agent': 'Mozilla/5.0'
-    }
-
-    zomato_request = urllib.request.Request(url, headers=HEADERS)
-    zomato_response = urllib.request.urlopen(zomato_request)
-    zomato_data = json.load(zomato_response)
-    zomato_response.close()
-
-    try:
-        dishes = zomato_data.get('daily_menus', [{}])[0].get('daily_menu', {}).get('dishes', [{}])
-        for x in dishes:
-            dish = x.get('dish', {})
-            menu.append([dish.get('name'), dish.get('price')])
-    except:
-        pass
-
-    return menu
+import re
 
 
 def menicka(url):
@@ -50,7 +11,7 @@ def menicka(url):
     menicka_response = menicka_request.read()
     menicka_request.close()
 
-    soup = BeautifulSoup(menicka_response, "lxml")
+    soup = BeautifulSoup(menicka_response, "html.parser")
 
     # try:
     menicka = soup.select('.menicka')
@@ -73,58 +34,48 @@ def menicka(url):
             for item in completion:
                 if len(item) == 0:
                     continue
-                if len(item) == 1:
-                    menu.append([item[0], ""])
                 if len(item) >= 2:
-                    menu.append([item[0], item[1]])
+                    food = re.sub(r'(^\d+\. )|(\d{3}g)', '', item[0])
+                    price = re.findall(r'\d+', item[1])
+                    if int(price[0]) > 100:
+                        menu.append([food, item[1]])
     except:
         pass
 
     return menu
 
 
-def bernard():
+def prague_catering(url):
     menu = []
 
-    bernard_file = urllib.request.urlopen("https://www.bernardpub.cz/pub/andel")
-    bernard_html = bernard_file.read()
-    bernard_file.close()
+    page = urllib.request.urlopen(url)
+    html = page.read()
+    page.close()
 
-    body = BeautifulSoup(bernard_html, "lxml")
-    datetab = body.find(text=datetime.datetime.today().__format__('%-d. %-m.'))
+    body = BeautifulSoup(html, "html.parser")
+    table = body.find(attrs={"class": "dennimenu"})
 
-    if datetab:
-        menu_id = datetab.parent.parent['data-tab-target']
-    else:
-        menu_id = body.find(attrs={"class": "day-selection-tab"})['id']
+    for row in table.find_all("tr"):
+        info = row.find_all("td")
+        if info[0].text == 'Salátový bar 100g':
+            break
 
-    for food in body.find(id=menu_id).find_all("div", {"class": "single-food"}):
-        name = food.strong.contents[0]
-        price = food.find_all("span", {"class": "food-price"})[0].contents[0]
-        menu.append([name, price])
+        if (info[1].text.strip() is not ''):
+            name = info[0].text
+            price = info[1].text
+            menu.append([name, price])
 
     return menu
 
 
-def run(filename):
-    with open('pages/'+filename) as f:
+def process(filename):
+    with open('pages/' + filename + '.json') as f:
         restaurants = json.load(f)
 
     for restaurant in restaurants:
-        if restaurant['type'] == 'bernard':
+        if restaurant['type'] == 'menicka':
             try:
-                restaurant['menu'] = bernard()
-            except:
-                pass
-        elif restaurant['type'] == 'zomato':
-            try:
-                restaurant['menu'] = zomato(
-                "https://developers.zomato.com/api/v2.1/dailymenu?res_id=" + restaurant['zomatoId'])
-            except:
-                pass
-        elif restaurant['type'] == 'menicka':
-            try:
-                restaurant['menu'] = menicka(restaurant['menickaLink'])
+                restaurant['menu'] = menicka(restaurant['menicka_link'])
             except:
                 pass
         elif restaurant['type'] == 'link':

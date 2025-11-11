@@ -1,0 +1,53 @@
+[
+  {
+    "name": "Bean house",
+    "link": "https://beanhouse.cz/#panel-3",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/8225-bean-house.html"
+  },
+  {
+    "name": "Éčko",
+    "link": "https://www.prague-catering.cz/provozovny/Kantyna-ECKO/Denni-menu-kantyny-ECKO/",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/8135-ecko.html"
+  },
+  {
+    "name": "U Chcípáka",
+    "link": "",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/8130-hostinec-u-chcipaka.html"
+  },
+  {
+    "name": "Futurama",
+    "link": "https://www.prague-catering.cz/provozovny/jidelna-kantyna-praha/jidelna-denni-menu-praha-8/",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/8136-futurama.html"
+  },
+  {
+    "name": "Yam Yam",
+    "link": "https://yamyam.cz/yam-yam-karlin/",
+    "type": "link"
+  },
+  {
+    "name": "Enjoy",
+    "link": "https://www.facebook.com/enjoykarlin#utm_source=mapy.cz&utm_medium=ppd&utm_campaign=firmy.cz-13308980",
+    "type": "link"
+  },
+  {
+    "name":"Peter's Pub",
+    "link": "https://www.facebook.com/petersburgerpub/",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/4230-peters-pub.html"
+  },
+  {
+    "name": "U Tunelu",
+    "link": "https://www.facebook.com/hostinecutunelu",
+    "type": "link"
+  },
+  {
+    "name": "Rustonka",
+    "type": "menicka",
+    "menicka_link": "https://www.menicka.cz/7099-fastgood-rustonka.html"
+  }
+
+]

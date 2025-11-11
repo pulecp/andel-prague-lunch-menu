@@ -7,21 +7,22 @@ app = Flask(__name__)
 # import datetime
 import restaurants
 
-pages = dict()
+pages = [
+    'ata',
+    'zbra'
+]
 
-DEFAULT_PAGE = 'andel'
+default_page = 'ata'
 
-for page in os.listdir('pages'):
-    pages[page.replace('.json', '')] = restaurants.run(page)
-
-
-@app.route('/', defaults={'name': DEFAULT_PAGE})
+@app.route('/', defaults={'name': default_page})
 @app.route('/<name>')
 def hello(name):
+
     if name not in pages:
-        name = DEFAULT_PAGE
-        # return render_template('404.html')
-    return render_template('index.html', restaurants=pages[name])
+        name = default_page
+
+    menu = restaurants.process(name)
+    return render_template('index.html', restaurants=menu)
 
 
 if __name__ == '__main__':
