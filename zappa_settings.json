@@ -1,0 +1,19 @@
+{
+    "prod": {
+        "app_function": "app.app",
+        "exclude": [
+            "boto3",
+            "dateutil",
+            "botocore",
+            "s3transfer",
+            "concurrent"
+        ],
+        "profile_name": "sandbox",
+        "project_name": "lunch-for-heroes",
+        "runtime": "python3.10",
+        "s3_bucket": "lunch-for-heroes",
+        "domain": "lunch.zagata.cz",
+        "certificate_arn": "arn:aws:acm:eu-central-1:748512957748:certificate/56c6bfaa-32a3-44dd-bc9c-0e4eb79ab245",
+        "apigateway_enabled": true
+    }
+}
