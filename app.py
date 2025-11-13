@@ -79,7 +79,7 @@ def load_from_cache(key, s3_client=None):
         today = datetime.today()
 
         # invalidate cache when its not from current day and its past 1100
-        if date.date() < today.date() and today.strftime('%H:%M') > '14:00':
+        if date.date() < today.date() and today.strftime('%H:%M') > '10:45':
             return None
 
         return data['content']
